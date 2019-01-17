@@ -8,9 +8,10 @@ var mongo = require('mongodb');
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
 
- var RegRecRouter = require('./router/register')
+var RegRecRouter = require('./router/register')
 
- app.use('/record',RegRecRouter); 
+app.use('/record',RegRecRouter); 
+
 app.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods",'PUT,GET,DELETE,POST,OPTIONS');
@@ -19,7 +20,7 @@ app.use(function(req,res,next){
     next();
 })
 
-mongoose.connect("mongodb://localhost:27017/Register",{ useNewUrlParser: true }, function(err, client) {
+mongoose.connect("mongodb://localhost:27017/parthiban",{ useNewUrlParser: true }, function(err, client) {
   if (err) {
      console.log("mongo error", err);
      return;
